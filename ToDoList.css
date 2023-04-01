@@ -12,6 +12,8 @@ html,body{
 .userColumn {    
     display: flex;
     flex-direction: column;
+
+    height: 164px;
 }
 
 .userName {    
@@ -20,9 +22,19 @@ html,body{
     border: 1px solid black;
 }
 
+.inputBar {
+    background-color: red;
+    height: 17px;
+}
+
 .todoList {
+    flex: 1;
+}
+
+.todoList li{
     display: flex;
     border: 1px solid black;
+    height: 19px;
 }
 
 input {
