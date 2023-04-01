@@ -1,0 +1,36 @@
+html,body{
+    width: 100%;
+}
+
+.userTable {
+    margin: 100px;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.userColumn {    
+    display: flex;
+    flex-direction: column;
+}
+
+.userName {    
+    text-align: center;
+    background-color: gray;
+    border: 1px solid black;
+}
+
+.todoList {
+    display: flex;
+    border: 1px solid black;
+}
+
+input {
+    border:none;
+}
+
+.clear {
+    
+    background-color: lightgray;
+    border: 1px solid black;
+}
