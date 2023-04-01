@@ -1,6 +1,9 @@
 const inputBar = document.querySelector(".inputBar")
-const userList = [0,1,2,3,4]
+let userList = [0,1,2,3,4]
 const todoList = document.querySelector(".todoList");
+const clrBtn = document.querySelector(".clrBtn");
+
+clrBtn.addEventListener('click', () => todoList.innerHTML= "")
 
 for (let i = 0; i < userList.length; i++) {
     let child = document.createElement("input")
