@@ -14,6 +14,7 @@ for (let i = 0; i < userList.length; i++) {
 }
 
 inputBar.addEventListener("keyup", function (e) {
+  console.log(e);
   if (userList.length < 5) {
     if (e.keyCode === 13) {
       insertList(e);
@@ -34,3 +35,12 @@ function insertList(e) {
   childLi.appendChild(child);
   todoList.appendChild(childLi);
 }
+
+const userName = document.querySelector(".userName");
+userName.addEventListener("keyup", function (e) {
+  if (e.keyCode === 13) {
+    console.log(123);
+    userName.parentNode.classList.add(userName.value);
+    userName.setAttribute("disabled", "true");
+  }
+});
