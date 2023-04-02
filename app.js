@@ -1,7 +1,12 @@
-const http = require("http");
+const express = require('express');
 
-const server = http.createServer((req, res) => {
-  console.log(req);
-});
+const app = express();
 
-server.listen(3000);
+const todoRouter = require('./routes/todolist')
+
+// app.use(todoRouter);
+
+app.use('/', express.static(__dirname + '/views'))
+
+
+app.listen(3000)
