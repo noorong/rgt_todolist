@@ -23,7 +23,7 @@ html,body{
 }
 
 .inputBar {
-    background-color: red;
+    background-color: aliceblue;
     height: 17px;
 }
 
@@ -31,10 +31,21 @@ html,body{
     flex: 1;
 }
 
-.todoList li{
+.todoList div{
     display: flex;
+
     border: 1px solid black;
-    height: 19px;
+    height: 19px;    
+    padding: 0 5px;
+}
+
+.todoList div .progress{
+    width: 20%;
+}
+
+.todoList div li{  
+    width: 60%;
+    margin: 0 auto
 }
 
 input {
@@ -42,7 +53,6 @@ input {
 }
 
 .clear {
-    
     background-color: lightgray;
     border: 1px solid black;
 }

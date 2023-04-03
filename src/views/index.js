@@ -6,11 +6,7 @@ const clrBtn = document.querySelector(".clrBtn");
 clrBtn.addEventListener("click", () => (todoList.innerHTML = ""));
 
 for (let i = 0; i < userList.length; i++) {
-  let child = document.createElement("input");
-  child.value = i + 1 + "." + userList[i];
-  let childLi = document.createElement("li");
-  childLi.appendChild(child);
-  todoList.appendChild(childLi);
+  todoList.children[0].children[1].innerHTML = userList[i];
 }
 
 inputBar.addEventListener("keyup", function (e) {
