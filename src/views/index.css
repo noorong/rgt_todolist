@@ -27,11 +27,11 @@ html,body{
     height: 17px;
 }
 
-.todoList {
+.olList {
     flex: 1;
 }
 
-.todoList div{
+.olList div{
     display: flex;
 
     border: 1px solid black;
@@ -39,11 +39,11 @@ html,body{
     padding: 0 5px;
 }
 
-.todoList div .progress{
+.olList div .progress{
     width: 20%;
 }
 
-.todoList div li{  
+.olList div li{  
     width: 60%;
     margin: 0 auto
 }

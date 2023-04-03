@@ -1,20 +1,24 @@
 // import * as userList from "../services/db"
-let userList =  ["서류 전달하기"];
+let todoList =  ["서류 전달하기"];
 const inputBar = document.querySelector(".inputBar");
-const todoList = document.querySelector(".todoList");
+const olList = document.querySelector(".olList");
 const clrBtn = document.querySelector(".clrBtn");
 
-clrBtn.addEventListener("click", () => (todoList.innerHTML = ""));
+clrBtn.addEventListener("click", () => {
+  olList.forEach((el) => el.innerHTML = "")
+  todoList = [];
+});
+renderList();
 
-for (let i = 0; i < userList.length; i++) {
-  todoList.children[0].children[1].innerHTML = userList[i];
-}
-
+//list 등록
 inputBar.addEventListener("keyup", function (e) {
-  console.log(e);
-  if (userList.length < 5) {
+  if (todoList.length < 5) {
     if (e.keyCode === 13) {
-      insertList(e);
+      if (e.target.value !== "") {
+        olList.innerHTML = ""
+        todoList.unshift(e.target.value);
+        renderList();
+      }
       inputBar.value = "";
     }
   } else {
@@ -23,25 +27,43 @@ inputBar.addEventListener("keyup", function (e) {
   }
 });
 
-function insertList(e) {
-  userList.push(e.target.value);
 
-  let child = document.createElement("input");
-  child.value = userList[userList.length - 1];
-  let childLi = document.createElement("li");
-  childLi.appendChild(child);
-  todoList.appendChild(childLi);
-}
 
+//받아온 데이터 li에 정보 삽입
+function renderList(){
+  for (let i = 0; i < todoList.length; i++) {
+    console.log(todoList)
+    if(todoList[i] !== ""){
+    olList.insertAdjacentHTML(
+      "afterbegin",
+      `
+      <div>
+      
+      <select class="progress">
+      <option value="">진행상황</option>
+      <option value="Done" >Done</option>
+      <option value="Ongoing">Ongoing</option>
+      <option value="Delay">Delay</option>
+    </select>
+    <li>${todoList[i]}</li>  
+      </div>       
+      `
+      );
+  }
+  }
+  
+  }
+
+//사용자 이름 등록
 const userName = document.querySelector(".userName");
 userName.addEventListener("keyup", function (e) {
   if (e.keyCode === 13) {
-    console.log(123);
     userName.parentNode.classList.add(userName.value);
     userName.setAttribute("disabled", "true");
   }
 });
 
+//진행상황 체크
 const progress = document.querySelector('.progress');
 progress.addEventListener('change',  changeBackColor)
 
