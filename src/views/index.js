@@ -1,5 +1,6 @@
+// import * as userList from "../services/db"
+let userList =  ["서류 전달하기"];
 const inputBar = document.querySelector(".inputBar");
-let userList = ["서류 전달하기"];
 const todoList = document.querySelector(".todoList");
 const clrBtn = document.querySelector(".clrBtn");
 
@@ -40,3 +41,15 @@ userName.addEventListener("keyup", function (e) {
     userName.setAttribute("disabled", "true");
   }
 });
+
+const progress = document.querySelector('.progress');
+progress.addEventListener('change',  changeBackColor)
+
+function changeBackColor() {
+  if(progress.options.selectedIndex === 1) 
+  progress.parentElement.style.backgroundColor = 'greenyellow'
+  else if(progress.options.selectedIndex === 2) 
+  progress.parentElement.style.backgroundColor = 'orange'
+  else if(progress.options.selectedIndex === 3) 
+  progress.parentElement.style.backgroundColor = 'pink'
+}
