@@ -46,7 +46,10 @@ function renderNewList() {
     olList.insertBefore(divElement, olList.lastChild);
     changeColorForNewList(divElement); 
   }
+  // 새로운 리스트 추가 후에 기존의 리스트들의 배경색을 변경할 수 있도록 이벤트 리스너 등록
+  changeColorForExistingLists();
 }
+
 
 
 //받아온 데이터 li에 정보 삽입
@@ -72,6 +75,7 @@ function renderList() {
   }
 }
 
+
 // 기존의 리스트의 배경색을 유지
 function changeColorForExistingLists() {
   const selectElements = document.querySelectorAll("select.progress");
@@ -80,6 +84,7 @@ function changeColorForExistingLists() {
       const selectedValue = event.target.value;
       const divElement = event.target.closest("div");
       changeColor(selectedValue, divElement);
+      checkDoneAll();
     });
     const selectedValue = selectElement.value;
     const divElement = selectElement.closest("div");
@@ -135,3 +140,15 @@ function changeColor(selectedValue, divElement) {
       break;
   }
 }
+
+function checkDoneAll() {
+  const selectElements = document.querySelectorAll("select.progress");
+  for (let i = 0; i < selectElements.length; i++) {
+    if (selectElements[i].value !== "Done") {
+      clrBtn.setAttribute("disabled", "true");
+      return;
+    }
+  }
+  clrBtn.removeAttribute("disabled");
+}
+
