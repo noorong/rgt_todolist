@@ -1,5 +1,5 @@
 // import * as userList from "../services/db"
-let todoList =  ["서류 전달하기"];
+let todoList =  ["서류 전달하기","서류 전달하기","서류 전달하기"];
 const inputBar = document.querySelector(".inputBar");
 const olList = document.querySelector(".olList");
 const clrBtn = document.querySelector(".clrBtn");
@@ -32,20 +32,19 @@ inputBar.addEventListener("keyup", function (e) {
 //받아온 데이터 li에 정보 삽입
 function renderList(){
   for (let i = 0; i < todoList.length; i++) {
-    console.log(todoList)
+    // console.log(todoList)
     if(todoList[i] !== ""){
     olList.insertAdjacentHTML(
       "afterbegin",
       `
       <div>
-      
-      <select class="progress">
-      <option value="">진행상황</option>
-      <option value="Done" >Done</option>
-      <option value="Ongoing">Ongoing</option>
-      <option value="Delay">Delay</option>
-    </select>
-    <li>${todoList[i]}</li>  
+        <select class="progress">
+          <option value="">진행상황</option>
+          <option value="Done" >Done</option>
+          <option value="Ongoing">Ongoing</option>
+          <option value="Delay">Delay</option>
+        </select>
+        <li>${todoList[i]}</li>  
       </div>       
       `
       );
@@ -67,15 +66,46 @@ userName.addEventListener("keyup", function (e) {
 });
 
 //진행상황 체크
-const progress = document.querySelector('.progress');
-progress.addEventListener('change',  changeBackColor)
+// const progress = document.querySelector('.progress');
+// const options = document.querySelectorAll('.progress option');
+// console.log(options[1].value);
+// options.forEach(el => el.addEventListener('click',  () => {
+//   console.log(el)
+//   options.parentElement.addEventListener('change',  changeBackColor)
 
-function changeBackColor() {
-  if(progress.options.selectedIndex === 1) 
-  progress.parentElement.style.backgroundColor = 'greenyellow'
-  else if(progress.options.selectedIndex === 2) 
-  progress.parentElement.style.backgroundColor = 'orange'
-  else if(progress.options.selectedIndex === 3) 
-  progress.parentElement.style.backgroundColor = 'pink'
-}
+//   function changeBackColor(e) {
+//     console.log(e.target.options.selectedIndex)
+//     if(progress.options.selectedIndex === 1) 
+//     progress.parentElement.style.backgroundColor = 'greenyellow'
+//     else if(progress.options.selectedIndex === 2) 
+//     progress.parentElement.style.backgroundColor = 'orange'
+//     else if(progress.options.selectedIndex === 3) 
+//     progress.parentElement.style.backgroundColor = 'pink'
+//   }
+// })
+// )
 
+
+const selectElements = document.querySelectorAll('select.progress');
+
+selectElements.forEach(selectElement => {
+  selectElement.addEventListener('change', (event) => {
+    const selectedValue = event.target.value;
+    const divElement = event.target.parentNode;
+
+    switch (selectedValue) {
+      case 'Done':
+        divElement.style.backgroundColor = 'green';
+        break;
+      case 'Ongoing':
+        divElement.style.backgroundColor = 'yellow';
+        break;
+      case 'Delay':
+        divElement.style.backgroundColor = 'red';
+        break;
+      default:
+        divElement.style.backgroundColor = 'white';
+        break;
+    }
+  });
+});
