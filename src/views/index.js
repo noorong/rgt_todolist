@@ -6,6 +6,7 @@ const clrBtn = document.querySelector(".clrBtn");
 clrBtn.addEventListener("click", () => {
   olList.innerHTML = "";
   todoList = [];
+  clrBtn.setAttribute("disabled", "true");
 });
 
 renderList();
@@ -46,7 +47,6 @@ function renderNewList() {
     olList.insertBefore(divElement, olList.lastChild);
     changeColorForNewList(divElement); 
   }
-  // 새로운 리스트 추가 후에 기존의 리스트들의 배경색을 변경할 수 있도록 이벤트 리스너 등록
   changeColorForExistingLists();
 }
 
@@ -74,7 +74,6 @@ function renderList() {
     }
   }
 }
-
 
 // 기존의 리스트의 배경색을 유지
 function changeColorForExistingLists() {
