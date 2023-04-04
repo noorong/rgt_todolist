@@ -5,7 +5,7 @@ const olList = document.querySelector(".olList");
 const clrBtn = document.querySelector(".clrBtn");
 
 clrBtn.addEventListener("click", () => {
-  olList.forEach((el) => el.innerHTML = "")
+  olList.innerHTML = "";
   todoList = [];
 });
 renderList();
@@ -55,12 +55,15 @@ function renderList(){
   }
 
 //사용자 이름 등록
+const userColumn = document.querySelector(".userColumn");
 const userName = document.querySelector(".userName");
 userName.addEventListener("keyup", function (e) {
   if (e.keyCode === 13) {
     userName.parentNode.classList.add(userName.value);
     userName.setAttribute("disabled", "true");
-  }
+    userColumn.children[1].removeAttribute("disabled");
+    userColumn.children[1].focus();
+  }  
 });
 
 //진행상황 체크
@@ -75,3 +78,4 @@ function changeBackColor() {
   else if(progress.options.selectedIndex === 3) 
   progress.parentElement.style.backgroundColor = 'pink'
 }
+
